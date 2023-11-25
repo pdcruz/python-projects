@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import random
+import time
 
+DEFAULT_SLEEP = 1
 ### SECTION - QUESTION DATA ###
 # Dictionary of all questions and answer options,
 # Correct answer MUST be first item of the options list!
@@ -14,6 +16,15 @@ questions = {
 
 
 ### SECTION - FUNCTIONS ###
+def start_quiz():
+    print("\n***** WELCOME TO THE {} QUIZ *****".format(__name__))
+    time.sleep(DEFAULT_SLEEP)
+    print("\nINSTRUCTIONS\nAfter each question, type the letter of your answer and hit \"Enter\"")
+    print("The only valid letters are a, b, c, or d")
+    time.sleep(DEFAULT_SLEEP)
+    input("\nPress Enter to begin ")
+
+
 def ask_question(key):
     print("\n{}".format(key))
     options = generate_options(questions[key])
@@ -35,19 +46,26 @@ def check_answer(player_answer, correct_answer, options_dict):
         # Hopefully they don't cock this up 1000 times and hit the recursion limit
         return check_answer(player_answer, correct_answer, options_dict)
 
+def print_feedback(result, correct_answer):
+    if result:
+        print("Correct")
+    else:
+        print("Incorrect. The answer is {}".format(correct_answer))
+
 ### END SECTION - FUNCTIONS ###
 
 
 ### SECTION - MAIN ###
-input("\nWelcome to the {} quiz show!\n\nPress Enter to begin ".format(__name__))
 score = 0
+start_quiz()
 
 for key in questions:
+    time.sleep(DEFAULT_SLEEP)
     correct_answer = questions[key][0]
     options = ask_question(key)
     player_answer = input("Enter choice: ").lower()
     result = check_answer(player_answer, correct_answer, options)
-    print(result)
+    print_feedback(result, correct_answer)
     score += result
 
 print("\nYour score: {0}/{1}".format(score, len(questions)))
