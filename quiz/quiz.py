@@ -28,7 +28,12 @@ def generate_options(option_list):
     return (options)
 
 def check_answer(player_answer, correct_answer, options_dict):
-    return options_dict[player_answer] == correct_answer
+    try:
+        return options_dict[player_answer] == correct_answer
+    except KeyError:
+        player_answer = input("Invalid choice, enter a letter a, b, c, or d only: ").lower()
+        # Hopefully they don't cock this up 1000 times and hit the recursion limit
+        return check_answer(player_answer, correct_answer, options_dict)
 
 ### END SECTION - FUNCTIONS ###
 
@@ -40,7 +45,7 @@ score = 0
 for key in questions:
     correct_answer = questions[key][0]
     options = ask_question(key)
-    player_answer = input("Enter choice: ")
+    player_answer = input("Enter choice: ").lower()
     result = check_answer(player_answer, correct_answer, options)
     print(result)
     score += result
