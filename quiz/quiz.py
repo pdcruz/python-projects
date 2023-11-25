@@ -9,7 +9,10 @@ DEFAULT_SLEEP = 1
 # Option order is randomized before presenting to the player.
 questions = {
    "Which country won the battle of Austerlitz?": ["France", "Russia", "England", "Germany"],
-   "Who was NOT a political leader during WW2?": ["Woodrow Wilson", "Joseph Stalin", "Winston Churchill", "Benito Mussolini"]
+   "Who was NOT a political leader during WW2?": ["Woodrow Wilson", "Joseph Stalin", "Winston Churchill", "Benito Mussolini"],
+   "Which general led his army across the Alps in the Second Punic War?": ["Hannibal Barca", "Julius Caesar", "Spartacus", "Marcus Agrippa"],
+   "Which Indian river marks the end of the conquests of Alexander the Great?": ["Beas", "Hydaspes", "Ganges", "Mandovi"],
+   "The standard ancient Greek spear-wall battle formation is called a . . . ": ["Phalanx", "Testudo", "Lembos", "Sarissa"],
 }
 
 ### END SECTION - QUESTION DATA ###
