@@ -1,5 +1,3 @@
 TO DO
 - Add more questions
-- Create different question sets for different categories, allow player to choose quiz category 
 - Define questions in a separate file and import relevant category after the player chooses
-- Randomize order of questions

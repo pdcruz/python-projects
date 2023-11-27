@@ -68,6 +68,12 @@ def display_options(input_dict):
         print("{}. {}".format(key, input_dict[key]))
 
 
+def shuffle_dictionary(input_dict):
+    item_list = list(input_dict.items())
+    random.shuffle(item_list)
+    return dict(item_list)
+
+
 def set_quiz_category(category_dict):
     print("\nCHOOSE A CATEGORY")
     display_options(category_dict)
@@ -82,13 +88,13 @@ def set_quiz_category(category_dict):
     print("\nStarting the {} quiz".format(category_name))
     match category_choice:
         case "a":
-            return history_questions
+            return shuffle_dictionary(history_questions)
         case "b":
-            return geography_questions
+            return shuffle_dictionary(geography_questions)
         case "c":
-            return science_questions
+            return shuffle_dictionary(science_questions)
         case "d":
-            return music_questions
+            return shuffle_dictionary(music_questions)
 
 
 def ask_question(key, all_questions):
@@ -135,7 +141,6 @@ show_instructions()
 time.sleep(DEFAULT_SLEEP)
 
 for key in questions:
-    time.sleep(DEFAULT_SLEEP)
     correct_answer = questions[key][0]
     options = ask_question(key, questions)
     player_answer = input("Enter choice: ").lower()
