@@ -16,27 +16,35 @@ category_options = {
 # Correct answer MUST be first item of the options list!
 # Option order is randomized before presenting to the player.
 history_questions = {
-   "Which country won the battle of Austerlitz in 1805?": ["France", "Russia", "England", "Germany"],
-   "Who was NOT a political leader during WW2?": ["Woodrow Wilson", "Joseph Stalin", "Winston Churchill", "Benito Mussolini"],
-   "Which general led his army across the Alps in the Second Punic War?": ["Hannibal Barca", "Julius Caesar", "Spartacus", "Marcus Agrippa"],
-   "Which Indian river marks the furthest point of the expedition of Alexander the Great?": ["Beas", "Hydaspes", "Ganges", "Mandovi"],
-   "The standard ancient Greek spear-wall battle formation is called a . . . ": ["Phalanx", "Testudo", "Lembos", "Sarissa"],
+   "Which country won the battle of Austerlitz in 1805?" : ["France", "Russia", "England", "Germany"],
+   "Who was NOT a political leader during WW2?" : ["Woodrow Wilson", "Joseph Stalin", "Winston Churchill", "Benito Mussolini"],
+   "This general led a Carthaginian army across the Alps in the Second Punic War." : ["Hannibal Barca", "Julius Caesar", "Spartacus", "Boudicca"],
+   "The army of Alexander the Great refused to march further east beyond this Indian river." : ["Beas", "Hydaspes", "Ganges", "Mandovi"],
+   "The standard ancient Greek spear-wall battle formation is called a . . . " : ["Phalanx", "Testudo", "Lembos", "Sarissa"],
 }
 
 geography_questions = {
     "What is the world's longest river?" : ["Nile", "Amazon", "Mekong", "Mississippi"],
-    "In which city is Sugarloaf Mountain located?" : ["Rio de Janeiro", "Cape Town", "Lisbon", "Chennai"]
+    "In which city is Sugarloaf Mountain located?" : ["Rio de Janeiro", "Cape Town", "Lisbon", "Chennai"],
+    "This sea separates Greece and Turkey." : ["Aegean", "Ionian", "Adriatic", "Balearic"],
+    "What is the world's deepest lake?" : ["Baikal", "Michigan", "Victoria", "Titicaca"],
+    "What percentage of the Earth is covered by water?" : ["71%", "52%", "85%", "48%"]
 }
 
 science_questions = {
-    "Which of the following is an SI base unit?" : ["Candela", "Volt", "Pascal", "Radian"],
-    "In 2012, a space probe became the first human-made object to exit the solar system. What is its name?" : ["Voyager", "Cassini", "Discovery", "Pioneer"]
+    "What phenomenon is caused by charged solar particles hitting the Earth's atmosphere?" : ["Aurora", "Sunspot", "Mirage", "Shining"],
+    "In 2012, this space probe became the first human-made object to exit the solar system." : ["Voyager 1", "Cassini", "Discovery", "Pioneer 3"],
+    "What machine performs the opposite function of a motor?" : ["Generator", "Pulley", "Engine", "Gyroscope"],
+    "How many litres of blood does an average human adult have?" : ["5", "2", "12", "30"],
+    "Which of these species has the longest lifespan?" : ["Greenland Shark", "Galapagos Tortoise", "Red King Crab", "Komodo Dragon"]
 }
 
 music_questions = {
     "How many strings does a standard guitar have?" : ["6", "7", "4", "8"],
-    "In the Western musical system, what is the smallest division between two notes called?" : ["Semitone", "Whole step", "Interval", "Slide"],
-    "Jerry Garcia was the lead guitarist of which band?" : ["The Grateful Dead", "Pink Floyd", "Rush", "Blue Oyster Cult"]
+    "In the Western musical system, what is the smallest possible pitch distance between two notes?" : ["Semitone", "Whole step", "Interval", "Slide"],
+    "Jerry Garcia was the lead guitarist of which band?" : ["The Grateful Dead", "Pink Floyd", "Rush", "Blue Oyster Cult"],
+    "What is the second-lowest of the six voical ranges?" : ["Baritone", "Contralto", "Tenor", "Iago"],
+    "Which of these musicians did not die at age 27?" : ["Biggie Smalls", "Jimi Hendrix", "Amy Winehouse", "Kurt Cobain"]
 }
 
 
@@ -47,10 +55,12 @@ music_questions = {
 ### SECTION - FUNCTIONS ###
 def start_quiz():
     print("\n***** WELCOME TO THE {} QUIZ *****".format(__name__))
-    time.sleep(DEFAULT_SLEEP)
+
+
+def show_instructions():
     print("\nINSTRUCTIONS\nAfter each question, type the letter of your answer and hit \"Enter\"")
     print("The only valid letters are a, b, c, or d")
-    time.sleep(DEFAULT_SLEEP)
+    input("\nPress Enter to begin: ")
 
 
 def display_options(input_dict):
@@ -59,7 +69,7 @@ def display_options(input_dict):
 
 
 def set_quiz_category(category_dict):
-    print("\nQuiz Categories")
+    print("\nCHOOSE A CATEGORY")
     display_options(category_dict)
     category_choice = input("Enter a letter to choose a category: ").lower()
     # NOT a great implementation of the KeyError check here, find a better way
@@ -118,7 +128,11 @@ def print_feedback(result, correct_answer):
 ### SECTION - MAIN ###
 score = 0
 start_quiz()
+time.sleep(DEFAULT_SLEEP)
 questions = set_quiz_category(category_options)
+time.sleep(DEFAULT_SLEEP)
+show_instructions()
+time.sleep(DEFAULT_SLEEP)
 
 for key in questions:
     time.sleep(DEFAULT_SLEEP)
